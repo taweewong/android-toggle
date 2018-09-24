@@ -148,7 +148,7 @@ public class LabeledSwitch extends View {
                 }
                 colorOn = tarr.getColor(R.styleable.Toggle_colorOn, accentColor);
             } else if (attr == R.styleable.Toggle_colorDisabled) {
-                colorDisabled = tarr.getColor(R.styleable.Toggle_colorOff, Color.parseColor("#D3D3D3"));
+                colorDisabled = tarr.getColor(R.styleable.Toggle_colorDisabled, Color.parseColor("#D3D3D3"));
             } else if (attr == R.styleable.Toggle_textOff) {
                 labelOff = tarr.getString(R.styleable.Toggle_textOff);
             } else if (attr == R.styleable.Toggle_textOn) {
@@ -511,5 +511,11 @@ public class LabeledSwitch extends View {
     @Override
     public boolean isEnabled() {
         return enabled;
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        this.enabled = enabled;
     }
 }
