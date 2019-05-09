@@ -179,7 +179,9 @@ public class LabeledSwitch extends View {
             canvas.drawArc(rightBgArc, 90, -180, false, paint);
             canvas.drawRect(outerRadii, 0, (width - outerRadii), height, paint);
 
-            paint.setColor(colorOff);
+
+            //background is always white
+            paint.setColor(Color.parseColor("#FFFFFF"));
 
             canvas.drawArc(leftFgArc, 90, 180, false, paint);
             canvas.drawArc(rightFgArc, 90, -180, false, paint);
@@ -192,7 +194,9 @@ public class LabeledSwitch extends View {
             } else {
                 onColor = Color.argb(alpha, Color.red(colorDisabled), Color.green(colorDisabled), Color.blue(colorDisabled));
             }
-            paint.setColor(onColor);
+
+            //background is always white
+            paint.setColor(Color.parseColor("#FFFFFF"));
 
             canvas.drawArc(leftBgArc, 90, 180, false, paint);
             canvas.drawArc(rightBgArc, 90, -180, false, paint);
@@ -213,7 +217,9 @@ public class LabeledSwitch extends View {
         if(isOn) {
             int alpha = (int)(((thumbBounds.centerX() - (width / 2)) / (thumbOnCenterX - (width / 2))) * 255);
             int offColor = Color.argb(alpha < 0 ? 0 : alpha, Color.red(colorOff), Color.green(colorOff), Color.blue(colorOff));
-            paint.setColor(offColor);
+
+            //when on, text is on color
+            paint.setColor(this.colorOn);
 
             int maxSize = width - (2 * padding) - (2 * thumbRadii);
 
@@ -230,7 +236,7 @@ public class LabeledSwitch extends View {
             int alpha = (int)((((width / 2) - thumbBounds.centerX()) / ((width / 2) - thumbOffCenterX)) * 255);
             int onColor;
             if(isEnabled()) {
-                onColor = Color.argb(alpha < 0 ? 0 : alpha, Color.red(colorOn), Color.green(colorOn), Color.blue(colorOn));
+                onColor = colorOff;
             } else {
                 onColor = Color.argb(alpha < 0 ? 0 : alpha, Color.red(colorDisabled), Color.green(colorDisabled), Color.blue(colorDisabled));
             }
@@ -251,7 +257,7 @@ public class LabeledSwitch extends View {
 //      Drawing Switch Thumb here
         {
             int alpha = (int) (((thumbBounds.centerX() - thumbOffCenterX) / (thumbOnCenterX - thumbOffCenterX)) * 255);
-            int offColor = Color.argb(alpha, Color.red(colorOff), Color.green(colorOff), Color.blue(colorOff));
+            int offColor = Color.argb(alpha, Color.red(colorOn), Color.green(colorOn), Color.blue(colorOn));
             paint.setColor(offColor);
 
             canvas.drawCircle(thumbBounds.centerX(), thumbBounds.centerY(), thumbRadii, paint);
@@ -259,7 +265,7 @@ public class LabeledSwitch extends View {
 
             int onColor;
             if(isEnabled()) {
-                onColor = Color.argb(alpha < 0 ? 0 : alpha, Color.red(colorOn), Color.green(colorOn), Color.blue(colorOn));
+                onColor = Color.argb(alpha < 0 ? 0 : alpha, Color.red(colorOff), Color.green(colorOff), Color.blue(colorOff));
             } else {
                 onColor = Color.argb(alpha < 0 ? 0 : alpha, Color.red(colorDisabled), Color.green(colorDisabled), Color.blue(colorDisabled));
             }
