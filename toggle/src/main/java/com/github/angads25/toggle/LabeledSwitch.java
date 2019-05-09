@@ -204,7 +204,7 @@ public class LabeledSwitch extends View {
 
             alpha = (int) (((thumbOnCenterX - thumbBounds.centerX()) / (thumbOnCenterX - thumbOffCenterX)) * 255);
             int offColor = Color.argb(alpha, Color.red(colorOff), Color.green(colorOff), Color.blue(colorOff));
-            paint.setColor(offColor);
+            paint.setColor(Color.parseColor("#FFFFFF"));
 
             canvas.drawArc(leftFgArc, 90, 180, false, paint);
             canvas.drawArc(rightFgArc, 90, -180, false, paint);
