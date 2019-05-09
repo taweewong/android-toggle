@@ -108,8 +108,11 @@ public class LabeledSwitch extends View {
             colorBorder = colorOn = getResources().getColor(R.color.colorAccent);
         }
 
+        Typeface plain = Typeface.createFromAsset(getContext().getAssets(), "fonts/db_heavent_rounded_cond.ttf");
+        Typeface bold = Typeface.create(plain, Typeface.BOLD);
         paint = new Paint();
         paint.setAntiAlias(true);
+        paint.setTypeface(bold);
 
         leftBgArc = new RectF();
         rightBgArc = new RectF();
